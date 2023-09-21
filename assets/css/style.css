@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=IBM+Plex+Sans+Arabic&display=swap');
+
+* {
+    padding: 0;
+    margin:0;
+}
+
+body {
+    width: 100vw;
+    height:auto;
+}
+
+header {
+    padding: 1rem;
+    text-align: center;
+    background-color: #284b63;
+    border-bottom: 2px solid #ffffff;
+    & h1 {
+        font-family:'IBM Plex Sans Arabic', sans-serif;
+        color:#ffffff;
+    }
+}
+
+footer {
+    padding: .5rem;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: #284b63;
+    border-top: 2px solid #ffffff;
+    & h5 {
+        font-family: cursive;
+    }
+}
+
+main {
+    padding: 1rem;
+    width:100%;
+    background-color:#353535;
+}
+
+#weatherContainer {
+    background-color: #d9d9d9;
+}
+
+.col {
+    margin: 1rem;
+}
+
+.row {
+    margin: .25rem;
+    padding: .25rem;
+}
+
+input {
+    /* margin: 5px 0px 5px 0px;
+    padding: 4px; */
+}
+
+#searchContainer {
+    background-color:#3c6e71;
+    & h4 {
+        font-family: 'Amiri Quran', serif;;
+    }
+}
+
+#searchBtn {
+    border: 1px solid #284b63;
+    border-radius: 10%;
+    /* & i {
+        background-color: #ffffff;
+        color: #660000;
+    } */
+}
+
+@media (max-width: 690px) {
+
+}
