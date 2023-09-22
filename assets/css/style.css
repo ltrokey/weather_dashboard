@@ -55,8 +55,8 @@ main {
 }
 
 input {
-    /* margin: 5px 0px 5px 0px;
-    padding: 4px; */
+    width: 100%;
+    height: auto;
 }
 
 #searchContainer {
@@ -66,13 +66,36 @@ input {
     }
 }
 
-.searchBtn {
-    border: 1px solid #284b63;
-    border-radius: 10%;
-    /* & i {
-        background-color: #ffffff;
-        color: #660000;
+.searchBtn{
+    transition: color 0.3s
+}
+
+.searchBtn .bi-search-heart {
+    color: #ffffff;
+    /* &&:hover {
+    color: red;
     } */
+}
+
+.searchHistoryContainer {
+
+    & h5 {
+        margin-top: 1rem;
+        border-top: 2px solid #353535;
+        text-align: center;
+        font-family: 'Amiri Quran', serif;
+        color: #d9d9d9;
+    }
+    & button {
+        margin-bottom: .25rem;
+        width: 100%;
+        height: auto;
+        font-family:'IBM Plex Sans Arabic', sans-serif;
+        color: #284b63;
+        background-color: #d9d9d9;
+        border: 1px solid #353535;
+        border-radius: 8px;
+    }
 }
 
 @media (max-width: 690px) {
