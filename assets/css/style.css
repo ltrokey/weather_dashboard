@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=IBM+Plex+Sans+Arabic&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Great+Vibes&family=IBM+Plex+Sans+Arabic&display=swap');
+
 * {
     padding: 0;
     margin:0;
@@ -20,6 +22,7 @@ header {
     & h1 {
         font-family:'IBM Plex Sans Arabic', sans-serif;
         color:#ffffff;
+        text-shadow: 2px 2px #494949;
     }
 }
 
@@ -32,6 +35,17 @@ footer {
     border-top: 2px solid #ffffff;
     & h5 {
         font-family: cursive;
+        letter-spacing: 2px;
+        color: #a7a7a7;
+        & .bi-heart-fill {
+            color: #b10006;
+        }
+    }
+    & span {
+        font-family: 'Great Vibes', cursive;
+        color: #6291b1;
+        letter-spacing: 5px;
+        text-shadow: .5px .5px  #162a37;
     }
 }
 
@@ -41,8 +55,9 @@ main {
     background-color:#353535;
 }
 
-#weatherContainer {
-    background-color: #d9d9d9;
+input {
+    border: 3px solid #d9d9d9;
+    border-radius: 8px;
 }
 
 .col {
@@ -63,6 +78,7 @@ main {
 
 .searchBtn {
     background-color: #353535;
+    border-radius: 8px;
     &&:hover {
         background-color: #7b0004;
         transition: all 0.3s ease-in-out;
@@ -87,7 +103,7 @@ main {
         border: 1px solid #353535;
         border-radius: 8px;
         &&:hover {
-            color: #7b0004;
+            color: #b10006;
             background-color: #ffffff;
             transition: all 0.3s ease-in-out;
         }
@@ -111,6 +127,10 @@ main {
             transition: all 0.3s ease-in-out;
         }
     }
+}
+
+#weather {
+    background-color: #d9d9d9;
 }
 
 @media (max-width: 690px) {

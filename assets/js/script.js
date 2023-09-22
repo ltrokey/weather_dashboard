@@ -1,43 +1,21 @@
 $(document).ready(function() {
   var locationInputEl = $('#locationInput')
   var searchBtnEl = $('.searchBtn')
-  var locationHistoryEl=$('#locationHistory')
+  var locationHistoryEl = $('#locationHistory')
   var locations = JSON.parse(localStorage.getItem('savedLocations')) || []
+  var clearBtnEl = $('.clearBtn')
 
-  function saveLocation(matchingLocation) {
-    var existingLocation = locations.find(function(location) {
-      return (
-        location.name.toLowerCase() === matchingLocation.name.toLowerCase() &&
-        location.state.toLowerCase() === matchingLocation.state.toLowerCase()
-      )
-    })
-    if (!existingLocation) {
-      locations.push(matchingLocation)
-      localStorage.setItem('savedLocations', JSON.stringify(locations))
-      // displayLocation() - REMINDER BUG
-    }
-  }
-
-  function displayLocation() {
-    // locationHistoryEl.innerHTML = '' REMINDER BUG
-
-    for (var i = 0; i < locations.length; i++) {
-      var locationEntry = document.createElement('button')
-      locationEntry.textContent = locations[i].name + ', ' + locations[i].state
-      locationHistoryEl.append(locationEntry)
-    }
-  }
-
-  displayLocation()
-
+  // User Input & `Click`
   searchBtnEl.on('click', searchLocation)
 
+  // User Input & `Enter`
   locationInputEl.on('keypress', function(event) {
       if (event.key === 'Enter') {
           searchLocation()
       }
   })
 
+  // Location API
   function searchLocation() {
     var location = locationInputEl.val().toLowerCase()
     var [city, state] = location.split(',').map(str => str.trim())
@@ -66,4 +44,36 @@ $(document).ready(function() {
         }
       })
   }
+
+  // Save to Local Storage
+  function saveLocation(matchingLocation) {
+    var existingLocation = locations.find(function(location) {
+      return (
+        location.name.toLowerCase() === matchingLocation.name.toLowerCase() &&
+        location.state.toLowerCase() === matchingLocation.state.toLowerCase()
+      )
+    })
+    if (!existingLocation) {
+      locations.push(matchingLocation)
+      localStorage.setItem('savedLocations', JSON.stringify(locations))
+      // displayLocation() - REMINDER BUG
+    }
+  }
+
+  // Create Button to Save User Input
+  function displayLocation() {
+    // locationHistoryEl.innerHTML = '' REMINDER BUG
+    for (var i = 0; i < locations.length; i++) {
+      var locationEntry = document.createElement('button')
+      locationEntry.textContent = locations[i].name + ', ' + locations[i].state
+      locationHistoryEl.append(locationEntry)
+    }
+  }
+
+  // Clear Local Storage
+  clearBtnEl.on('click', function() {
+    localStorage.clear()
+    location.reload()
+  })
+    displayLocation()
 })
