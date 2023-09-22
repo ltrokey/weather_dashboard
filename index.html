@@ -21,7 +21,7 @@
                     <h4>Search for a City</h4>
                     <div class="row">
                         <input type="text" id="locationInput" class="col-9" placeholder="City, State">
-                        <button class="btn searchBtn col-3" aria-label="search">
+                        <button class="searchBtn col-3" aria-label="search">
                             <i class="bi bi-search-heart">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 16 16">
                                     <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
@@ -29,8 +29,9 @@
                                 </svg>
                             </i>
                         </button>
-                        <div class="searchHistoryContainer">
-                            <h5>Search History</h5>
+                        <div class="searchHistoryContainer row mt-3 ">
+                            <h5 class="col-9 mt-3 mb-3">Search History</h5>
+                            <button class="clearBtn col-3 mt-3 mb-3">Clear All</button>
                             <div id="locationHistory"></div>
                         </div>
                     </div>
