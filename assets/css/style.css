@@ -129,8 +129,12 @@ input {
     }
 }
 
-#weather {
+#weatherContainer {
     background-color: #d9d9d9;
+}
+
+#currentWeatherContainer {
+    border: 2px solid #162a37;
 }
 
 @media (max-width: 690px) {
