@@ -18,7 +18,7 @@ $(document).ready(function() {
       }
   })
 
-  // Input Location API
+  // Input Location
   function searchLocation() {
     var location = $('#locationInput').val().toLowerCase()
     var [city, state] = location.split(',').map(str => str.trim())
@@ -26,6 +26,11 @@ $(document).ready(function() {
     $('#locationInput').val('')
 
     getLocation(city, state)
+  }
+
+  // Alert User
+  function displayAlert() {
+    $('#alert').text('Invalid entry, please check spelling').attr('style', 'color:#7b0004;')
   }
 
   // Location API
@@ -41,15 +46,12 @@ $(document).ready(function() {
           return location.name.toLowerCase() === city && location.state.toLowerCase() === state
         });
         if (matchingLocation) {
-          console.log('Fetch Response\Location-------------')
-          console.log('Match found:')
-          console.log(matchingLocation)
           saveLocation(matchingLocation)
           displayLocation()
           getCurrentWeather(matchingLocation.lat, matchingLocation.lon)
           getFutureWeather(matchingLocation.lat, matchingLocation.lon)
         } else {
-          console.log('No matching location found.')
+          displayAlert()
         }
       })
   }
@@ -87,7 +89,7 @@ $(document).ready(function() {
     })
     .then(function(data) {
       for (var i = 7; i < data.list.length; i += 8) {
-        var formattedDateTime = dayjs.unix(data.list[i].dt).format('ddd, M-D');
+        var formattedDateTime = dayjs.unix(data.list[i].dt).format('ddd, MMM. D');
         var day = $('<p>').text(formattedDateTime)
         var iconCode = data.list[i].weather[0].icon
         var iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`
@@ -126,14 +128,19 @@ $(document).ready(function() {
     for (var i = 0; i < locations.length; i++) {
       var locationBtn = $('<button>').text(locations[i].name + ', ' + locations[i].state)
 
-      $(locationBtn).on('click', function() {
-        $('#currentWeatherContainer').empty()
-        $('#futureWeatherContainer').empty()
-        getLocation(city, state)
-      })
+      addLocationBtnEvent(locationBtn, locations[i].name.toLowerCase(), locations[i].state.toLowerCase())
 
       $('#locationHistory').append(locationBtn)
     }
+  }
+
+  // Add Click Event to Search History Buttons
+  function addLocationBtnEvent(locationBtn, city, state) {
+    $(locationBtn).on('click', function() {
+      $('#currentWeatherContainer').empty()
+      $('#futureWeatherContainer').empty()
+      getLocation(city, state)
+    })
   }
 
   // Clear Local Storage

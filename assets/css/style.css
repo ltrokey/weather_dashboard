@@ -89,6 +89,13 @@ input {
     color: #ffffff;
 }
 
+#alert {
+    margin-top: 4px;
+    font-size: medium;
+    font-style: italic;
+    color: #a7a7a7;
+}
+
 .searchHistoryContainer {
     border-top: 2px solid #353535;
     & h5 {
