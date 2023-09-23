@@ -1,18 +1,14 @@
 $(document).ready(function() {
 
-  const locationInputEl = $('#locationInput')
-  const searchBtnEl = $('.searchBtn')
-  const locationHistoryEl = $('#locationHistory')
   const locations = JSON.parse(localStorage.getItem('savedLocations')) || []
-  const clearBtnEl = $('.clearBtn')
 
   // User Input & `Click`
-  searchBtnEl.on('click', function() {
+ $('.searchBtn').on('click', function() {
     searchLocation()
   })
 
   // User Input & `Enter`
-  locationInputEl.on('keypress', function(event) {
+  $('#locationInput').on('keypress', function(event) {
       if (event.key === 'Enter') {
           searchLocation()
       }
@@ -20,10 +16,10 @@ $(document).ready(function() {
 
   // Input Location API
   function searchLocation() {
-    var location = locationInputEl.val().toLowerCase()
+    var location = $('#locationInput').val().toLowerCase()
     var [city, state] = location.split(',').map(str => str.trim())
 
-    locationInputEl.val('')
+    $('#locationInput').val('')
 
     var requestUrlLocation = `https://api.openweathermap.org/geo/1.0/direct?q=${city},${state}&limit=5&appid=daf50ca1167039b8a5b4a47e15c528e8`
 
@@ -98,22 +94,22 @@ $(document).ready(function() {
     if (!existingLocation) {
       locations.push(matchingLocation)
       localStorage.setItem('savedLocations', JSON.stringify(locations))
-      // displayLocation() - REMINDER BUG
     }
   }
 
   // Create Button to Save User Input
   function displayLocation() {
-    // locationHistoryEl.innerHTML = '' REMINDER BUG
+
+    $('#locationHistory').empty()
+
     for (var i = 0; i < locations.length; i++) {
-      var locationEntry = document.createElement('button')
-      locationEntry.textContent = locations[i].name + ', ' + locations[i].state
-      locationHistoryEl.append(locationEntry)
+      var locationBtn = $('<button>').text(locations[i].name + ', ' + locations[i].state)
+      $('#locationHistory').append(locationBtn)
     }
   }
 
   // Clear Local Storage
-  clearBtnEl.on('click', function() {
+  $('.clearBtn').on('click', function() {
     localStorage.clear()
     location.reload()
   })
