@@ -69,9 +69,9 @@ $(document).ready(function() {
       var iconCode = data.weather[0].icon
       var iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`
       var currentIcon = $('<img>').attr('src', iconUrl)
-      var currentTemp = $('<p>').text('Temp: ' + data.main.temp + ' °F')
+      var currentTemp = $('<p>').text('Temp: ' + Math.round(data.main.temp) + ' °F')
       var currentHumidity = $('<p>').text('Humdity: ' + data.main.humidity + '%')
-      var currentWind = $('<p>').text('Wind Speed: ' + data.wind.speed + ' mph')
+      var currentWind = $('<p>').text('Wind Speed: ' + Math.round(data.wind.speed) + ' mph')
 
       $('#currentWeatherContainer').append(cityName, currentDay, currentIcon, currentTemp, currentHumidity, currentWind)
     })
@@ -92,17 +92,17 @@ $(document).ready(function() {
         var iconCode = data.list[i].weather[0].icon
         var iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`
         var icon = $('<img>').attr('src', iconUrl)
-        var temp = $('<p>').text('Temp: ' + data.list[i].main.temp + ' °F')
+        var temp = $('<p>').text('Temp: ' + Math.round(data.list[i].main.temp) + ' °F')
         var humidity = $('<p>').text('Humdity: ' + data.list[i].main.humidity + '%')
-        var wind = $('<p>').text('Wind Speed: ' + data.list[i].wind.speed + ' mph')
+        var wind = $('<p>').text('Wind Speed: ' + Math.round(data.list[i].wind.speed) + ' mph')
 
-        var container = $('<div>').addClass('col-12 col-md-2 mb-3');
+        var container = $('<div>').addClass('col-12 col-md-2 mb-3 border border-secondary');
         container.append(day, icon, temp, humidity, wind);
 
         $('#futureWeatherContainer').append(container)
       }
     })
-  } //*****************************ENDS HERE!!!!!
+  }
 
   // Save to Local Storage
   function saveLocation(matchingLocation) {
