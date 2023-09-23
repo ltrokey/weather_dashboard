@@ -21,7 +21,7 @@
 
         <main class="container-fluid">
             <div class="row">
-                <div id="searchContainer" class="col-4">
+                <section id="searchContainer" class="col-4">
                     <h4>Search for a City</h4>
                     <div class="row">
                         <input type="text" id="locationInput" class="col-9" placeholder="City, State">
@@ -39,17 +39,16 @@
                             <div id="locationHistory"></div>
                         </div>
                     </div>
-                </div>
-                <div id="weatherContainer" class="col-8">
+                </section>
+                <section id="weatherContainer" class="col-8">
                     <div class="row">
                         <div id="currentWeatherContainer"></div>
                         <div class="row">
-                            <div>
-                                <h4>5-Day Weather Forecast</h4>
-                            </div>
+                            <h4 class="'col-12" >5-Day Weather Forecast</h4>
+                            <div class='row' id="futureWeatherContainer"></div>
                         </div>
                     </div>
-                </div>
+                </section>
 
             </div>
         </main>

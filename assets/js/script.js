@@ -4,13 +4,17 @@ $(document).ready(function() {
 
   // User Input & `Click`
  $('.searchBtn').on('click', function() {
+    $('#currentWeatherContainer').empty()
+    $('#futureWeatherContainer').empty()
     searchLocation()
   })
 
   // User Input & `Enter`
   $('#locationInput').on('keypress', function(event) {
       if (event.key === 'Enter') {
-          searchLocation()
+        $('#currentWeatherContainer').empty()
+        $('#futureWeatherContainer').empty()
+        searchLocation()
       }
   })
 
@@ -21,6 +25,11 @@ $(document).ready(function() {
 
     $('#locationInput').val('')
 
+    getLocation(city, state)
+  }
+
+  // Location API
+  function getLocation(city, state) {
     var requestUrlLocation = `https://api.openweathermap.org/geo/1.0/direct?q=${city},${state}&limit=5&appid=daf50ca1167039b8a5b4a47e15c528e8`
 
     fetch(requestUrlLocation)
@@ -45,7 +54,7 @@ $(document).ready(function() {
       })
   }
 
-  // Weather Current
+  // Weather Current API
   function getCurrentWeather(lat, lon) {
     var requestUrlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=daf50ca1167039b8a5b4a47e15c528e8&units=imperial&lang=en`
 
@@ -64,7 +73,6 @@ $(document).ready(function() {
       var currentHumidity = $('<p>').text('Humdity: ' + data.main.humidity + '%')
       var currentWind = $('<p>').text('Wind Speed: ' + data.wind.speed + ' mph')
 
-
       $('#currentWeatherContainer').append(cityName, currentDay, currentIcon, currentTemp, currentHumidity, currentWind)
     })
   }
@@ -78,8 +86,21 @@ $(document).ready(function() {
         return response.json()
     })
     .then(function(data) {
-      console.log('Fetch Response\Future Weather-------------')
-      console.log(data)
+      for (var i = 7; i < data.list.length; i += 8) {
+        var formattedDateTime = dayjs.unix(data.list[i].dt).format('ddd, M-D');
+        var day = $('<p>').text(formattedDateTime)
+        var iconCode = data.list[i].weather[0].icon
+        var iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`
+        var icon = $('<img>').attr('src', iconUrl)
+        var temp = $('<p>').text('Temp: ' + data.list[i].main.temp + ' °F')
+        var humidity = $('<p>').text('Humdity: ' + data.list[i].main.humidity + '%')
+        var wind = $('<p>').text('Wind Speed: ' + data.list[i].wind.speed + ' mph')
+
+        var container = $('<div>').addClass('col-12 col-md-2 mb-3');
+        container.append(day, icon, temp, humidity, wind);
+
+        $('#futureWeatherContainer').append(container)
+      }
     })
   } //*****************************ENDS HERE!!!!!
 
@@ -104,6 +125,13 @@ $(document).ready(function() {
 
     for (var i = 0; i < locations.length; i++) {
       var locationBtn = $('<button>').text(locations[i].name + ', ' + locations[i].state)
+
+      $(locationBtn).on('click', function() {
+        $('#currentWeatherContainer').empty()
+        $('#futureWeatherContainer').empty()
+        getLocation(city, state)
+      })
+
       $('#locationHistory').append(locationBtn)
     }
   }
