@@ -30,7 +30,10 @@ $(document).ready(function() {
 
   // Alert User
   function displayAlert() {
-    $('#alert').text('Invalid entry, please check spelling').attr('style', 'color:#7b0004;')
+    $('#alert').text('Invalid, please check spelling. (Example: Denver, Colorado)').attr('style', 'color:#7b0004;')
+    setTimeout(function () {
+      $('#alert').text('')
+    }, 4000)
   }
 
   // Location API
