@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=IBM+Plex+Sans+Arabic&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Great+Vibes&family=IBM+Plex+Sans+Arabic&display=swap');
+
+* {
+    padding: 0;
+    margin:0;
+}
+
+body {
+    width: 100vw;
+    height:auto;
+}
+
+header {
+    padding: 1rem;
+    text-align: center;
+    background-color: #284b63;
+    border-bottom: 2px solid #ffffff;
+    & h1 {
+        font-family:'IBM Plex Sans Arabic', sans-serif;
+        color:#ffffff;
+        text-shadow: 2px 2px #494949;
+    }
+}
+
+footer {
+    padding: .5rem;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: #284b63;
+    border-top: 2px solid #ffffff;
+    & h5 {
+        font-family: cursive;
+        letter-spacing: 2px;
+        color: #a7a7a7;
+        & .bi-heart-fill {
+            color: #b10006;
+        }
+    }
+    & span {
+        font-family: 'Great Vibes', cursive;
+        color: #6291b1;
+        letter-spacing: 5px;
+        text-shadow: .5px .5px  #162a37;
+    }
+}
+
+main {
+    padding: 1rem;
+    width:100%;
+    background-color:#353535;
+}
+
+input {
+    border: 3px solid #d9d9d9;
+    border-radius: 8px;
+}
+
+.col {
+    margin: 1rem;
+}
+
+.row {
+    margin: .25rem;
+    padding: .25rem;
+}
+
+#searchContainer {
+    background-color:#3c6e71;
+    & h4 {
+        font-family: 'Amiri Quran', serif;;
+    }
+}
+
+.searchBtn {
+    background-color: #353535;
+    border-radius: 8px;
+    &&:hover {
+        background-color: #7b0004;
+        transition: all 0.3s ease-in-out;
+        }
+}
+
+.searchBtn .bi-search-heart {
+    color: #ffffff;
+}
+
+#alert {
+    margin-top: 4px;
+    font-size: medium;
+    font-style: italic;
+    color: #a7a7a7;
+}
+
+.searchHistoryContainer {
+    border-top: 2px solid #353535;
+    & h5 {
+        font-family: 'Amiri Quran', serif;
+        color: #ffffff;
+    }
+    & button {
+        font-family:'IBM Plex Sans Arabic', sans-serif;
+        font-size: small;
+        color: #ffffff;
+        background-color: #284b63;
+        border: 1px solid #353535;
+        border-radius: 8px;
+        &&:hover {
+            color: #b10006;
+            background-color: #ffffff;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+}
+
+#locationHistory {
+    & button {
+        margin-bottom: .25rem;
+        width: 100%;
+        height: auto;
+        font-size: medium;
+        font-family:'IBM Plex Sans Arabic', sans-serif;
+        color: #284b63;
+        background-color: #d9d9d9;
+        border: 1px solid #353535;
+        border-radius: 8px;
+        &&:hover {
+            color: #ffffff;
+            background-color: #353535;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+}
+
+#weatherContainer {
+    background-color: #d9d9d9;
+}
+
+#currentWeatherContainer {
+    border: 1px solid #162a37;
+}
+
+#futureWeatherContainer {
+    font-size: smaller;
+    color: #ffffff;
+    & .col-md-2 {
+        background-color: #353535;
+    }
+}
+
+@media (max-width: 768px) {
+    #futureWeatherContainer {
+        flex-direction: column;
+        & .col-md-2 {
+            width: 100%;
+        }
+    }
+}
