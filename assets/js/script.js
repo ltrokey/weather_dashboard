@@ -31,6 +31,7 @@ $(document).ready(function() {
   // Alert User
   function displayAlert() {
     $('#alert').text('Invalid, please check spelling. (Example: Denver, Colorado)').attr('style', 'color:#7b0004;')
+
     setTimeout(function () {
       $('#alert').text('')
     }, 4000)
@@ -68,14 +69,14 @@ $(document).ready(function() {
         return response.json()
     })
     .then(function(data) {
-      var formattedDateTime = dayjs.unix(data.dt).format('dddd, MMMM D, YYYY');
+      var formattedDateTime = dayjs.unix(data.dt).format('dddd, MMMM D, YYYY')
       var currentDay = $('<p>').text(formattedDateTime)
       var cityName = $('<h4>').text(data.name)
       var iconCode = data.weather[0].icon
       var iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`
       var currentIcon = $('<img>').attr('src', iconUrl)
       var currentTemp = $('<p>').text('Temp: ' + Math.round(data.main.temp) + ' °F')
-      var currentHumidity = $('<p>').text('Humdity: ' + data.main.humidity + '%')
+      var currentHumidity = $('<p>').text('Humidity: ' + data.main.humidity + '%')
       var currentWind = $('<p>').text('Wind Speed: ' + Math.round(data.wind.speed) + ' mph')
 
       $('#currentWeatherContainer').append(cityName, currentDay, currentIcon, currentTemp, currentHumidity, currentWind)
@@ -92,17 +93,18 @@ $(document).ready(function() {
     })
     .then(function(data) {
       for (var i = 7; i < data.list.length; i += 8) {
-        var formattedDateTime = dayjs.unix(data.list[i].dt).format('ddd, MMM. D');
+        var formattedDateTime = dayjs.unix(data.list[i].dt).format('ddd, MMM. D')
         var day = $('<p>').text(formattedDateTime)
         var iconCode = data.list[i].weather[0].icon
         var iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`
         var icon = $('<img>').attr('src', iconUrl)
         var temp = $('<p>').text('Temp: ' + Math.round(data.list[i].main.temp) + ' °F')
-        var humidity = $('<p>').text('Humdity: ' + data.list[i].main.humidity + '%')
+        var humidity = $('<p>').text('Humidity: ' + data.list[i].main.humidity + '%')
         var wind = $('<p>').text('Wind Speed: ' + Math.round(data.list[i].wind.speed) + ' mph')
 
-        var container = $('<div>').addClass('col-12 col-md-2 mb-3 border border-secondary');
-        container.append(day, icon, temp, humidity, wind);
+        var container = $('<div>').addClass('col-12 col-md-2 mb-3 border border-secondary')
+
+        container.append(day, icon, temp, humidity, wind)
 
         $('#futureWeatherContainer').append(container)
       }
@@ -142,6 +144,7 @@ $(document).ready(function() {
     $(locationBtn).on('click', function() {
       $('#currentWeatherContainer').empty()
       $('#futureWeatherContainer').empty()
+
       getLocation(city, state)
     })
   }
