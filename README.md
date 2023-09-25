@@ -1,6 +1,6 @@
 # Weather Dashboard
 
-[Link to live deploy](add url here)
+[Link to live deploy](https://ltrokey.github.io/weather_dashboard/)
 
 ## Description
 
