@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   const locations = JSON.parse(localStorage.getItem('savedLocations')) || []
-  var apiKey = window.location.hostname === 'https://ltrokey.github.io/weather_dashboard/' ? process.env.WEATHER_DASHBOARD_API_KEY : API_KEY
+  var apiKey = '0e85c09f82737f5cbeeaa614911739d4'
 
   // User Input & `Click`
  $('.searchBtn').on('click', function() {
