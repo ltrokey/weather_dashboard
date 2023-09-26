@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
   const locations = JSON.parse(localStorage.getItem('savedLocations')) || []
+  var apiKey = '0e85c09f82737f5cbeeaa614911739d4'
 
   // User Input & `Click`
  $('.searchBtn').on('click', function() {
@@ -39,7 +40,7 @@ $(document).ready(function() {
 
   // Location API
   function getLocation(city, state) {
-    var requestUrlLocation = `https://api.openweathermap.org/geo/1.0/direct?q=${city},${state}&limit=5&appid=daf50ca1167039b8a5b4a47e15c528e8`
+    var requestUrlLocation = `https://api.openweathermap.org/geo/1.0/direct?q=${city},${state}&limit=5&appid=${apiKey}`
 
     fetch(requestUrlLocation)
       .then(function(response) {
@@ -62,7 +63,7 @@ $(document).ready(function() {
 
   // Weather Current API
   function getCurrentWeather(lat, lon) {
-    var requestUrlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=daf50ca1167039b8a5b4a47e15c528e8&units=imperial&lang=en`
+    var requestUrlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial&lang=en`
 
     fetch(requestUrlCurrentWeather)
     .then(function(response) {
@@ -85,7 +86,7 @@ $(document).ready(function() {
 
   // Weather 5-Day API
   function getFutureWeather(lat, lon) {
-    var requestUrlFutureWeather = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=daf50ca1167039b8a5b4a47e15c528e8&units=imperial&lang=en`
+    var requestUrlFutureWeather = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial&lang=en`
 
     fetch(requestUrlFutureWeather)
     .then(function(response) {
