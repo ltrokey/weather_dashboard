@@ -15,11 +15,13 @@ The motivation behind developing this weather dashboard was to create a dependab
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+![Display Page](./assets/images/screen_shot_display_main.png)
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
+![Display Weather](./assets/images/screen_shot_display_weather.png)
 
-![alt text](assets/images/screenshot.png)
+![Display Weather](./assets/images//screen_shot_mobile_1.png)
+
+![Display Weather](./assets/images//screen_shot_mobile_2.png)
 
 ## License
 
