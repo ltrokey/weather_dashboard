@@ -19,7 +19,7 @@ $(document).ready(function() {
       }
   })
 
-  // Input Location
+  // Input  Location
   function searchLocation() {
     var location = $('#locationInput').val().toLowerCase()
     var [city, state] = location.split(',').map(str => str.trim())
